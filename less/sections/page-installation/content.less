@@ -1,0 +1,57 @@
+.content {
+  position: relative;
+  padding: 66px 0 clamp(60px, 16vw, 200px);
+  background: @background[white];
+
+  .container:not(aside)  {
+    max-width: 1045px;
+    margin-left: auto;
+    
+    @media (min-width: @sizes[minLG]) {
+      margin-right: calc((100% - 1316px) / 2);
+    }
+
+    @media (max-width: @sizes[maxLG]) {
+      margin-right: 16px;
+      width: calc(100% - 280px);
+    }
+
+    @media (max-width: @sizes[maxMD]) {
+      width: calc(100% - 260px);
+    }
+
+    @media (max-width: @sizes[maxSM]) {
+      width: 100%;
+    }
+  }
+
+  &__wrap {
+    position: relative;
+  }
+
+  .calculator {
+    background: none;
+    padding: 0 0 clamp(60px, 12vw, 100px);
+
+    .correct__list {
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .calc {
+      background: #F9F9F9;
+      border: 1px solid #E6E6E6;
+      padding: clamp(35px,7vw,36px) clamp(20px,12vw,47px) clamp(20px,12vw,57px) clamp(20px,12vw,52px);
+
+      @media (max-width: @sizes[maxMD]) {
+        padding: 10px;
+      }
+
+      input {
+        background: none;
+      }
+    }
+  }
+}
+
+

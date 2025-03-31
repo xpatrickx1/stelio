@@ -1,0 +1,60 @@
+{
+  "urls": [
+    {
+      "link": "/",
+      "name": "front"
+    },
+    {
+      "link": "/payments/",
+      "name": "payments"
+    },
+    {
+      "link": "/team/",
+      "name": "team"
+    },
+    {
+      "link": "/calculator/",
+      "name": "calculator"
+    },
+    {
+      "link": "/inner/",
+      "name": "inner"
+    },
+    {
+      "link": "/inner2/",
+      "name": "inner2"
+    },
+    {
+      "link": "/inner3/",
+      "name": "inner3"
+    },
+    {
+      "link": "/innerplain/",
+      "name": "innerplain"
+    },
+    {
+      "link": "/installation/",
+      "name": "installation"
+    },
+    {
+      "link": "/contacts/",
+      "name": "contacts"
+    },
+    {
+      "link": "/catalog/",
+      "name": "catalog"
+    },
+    {
+      "link": "/works/",
+      "name": "works"
+    },
+    {
+      "link": "/price/",
+      "name": "price"
+    },
+    {
+      "link": "/singleworks/",
+      "name": "singleworks"
+    }
+  ]
+}

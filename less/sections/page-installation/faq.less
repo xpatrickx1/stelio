@@ -1,0 +1,183 @@
+
+.faq {
+  padding: 70px 0;
+  background: @color[white];
+  
+
+  @media ( max-width: @sizes[ maxMD ] ) {
+    padding: 70px 0;
+  }
+
+  @media ( max-width: @sizes[ maxSM ] ) {
+    padding: 60px 0;
+  }
+
+  h2 {
+    .font(700);
+    .fontSize(32px, 34px);
+    margin-bottom: clamp(30px, 3vw, 42px);
+  }
+
+  &__wrap {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    @media ( max-width: @sizes[maxLG]) {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+  }
+
+
+  &__content {
+    max-width: 870px;
+    width: 100%;
+
+    @media ( max-width: @sizes[maxLG]) {
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    @media ( max-width: @sizes[ maxMD ] ) {
+      padding: 0 34px;
+    }
+
+    @media ( max-width: @sizes[ maxSM ] ) {
+      padding: 0 16px;
+    }
+  }
+
+  &__accordion {
+    flex: 1 0 auto;
+    background: linear-gradient(0deg, #FFFFFF -3.01%, #F8F8F8 100%);
+    max-width: 917px;
+    width: 100%;
+  }
+
+  &__item {
+    position: relative;
+    transition: @transition;
+    padding: clamp(16px, 3vw, 36px);
+    background: #FFFFFF;
+    border-top: 1px solid #DFDFDF;
+
+    @media (min-width: @sizes[minMD]) {
+      &:hover {
+        background: linear-gradient(0deg, #FFFFFF -3.01%, #F8F8F8 100%);
+      }
+
+      &:active {
+        background: @background[white];
+      }
+    }
+
+    &.currentFaq {
+      background: linear-gradient(0deg, #FFFFFF -3.01%, #F8F8F8 100%);
+    }
+  }
+
+  &__title-wrap {
+    position: relative;
+    cursor: pointer;
+  }
+
+  h3 {
+    display: flex;
+    align-items: center;
+    position: relative;
+    .fontNunito(700);
+    .fontSize( 18px, 25px );
+    width: 90%;
+    margin: 0;
+    transition: @transition;
+    height: fit-content;
+    min-height: 30px;
+
+    @media ( max-width: @sizes[ maxSM ] ) {
+      .fontSize( 16px, 21px );
+      width: 75%;
+      height: initial;
+    }
+
+    &.active {
+      color: @color[title];
+    }
+
+    &.open {
+
+      div::before {
+        transform: scaleX( 1 );
+      }
+
+      .acccordion__icon {
+        transform: rotate( 135deg );
+      }
+
+    }
+
+  }
+
+  &__question-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: calc( 50% - 12px );
+    right: 0;
+    transition: @transition;
+
+    @media ( max-width: @sizes[ maxSM ] ) {
+      right: 0;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1.64px;
+      position: absolute;
+      top: calc(50% - .8px);
+      background: #000000;
+      transition: @transition;
+      transform-origin: center;
+      border-radius: @border[mainRadius];
+      left: 0;
+    }
+
+    &::after {
+      left: 0;
+      //transform: rotate(45deg);
+    }
+
+    &::before {
+      left: 0;
+      transform: rotate(90deg);
+    }
+
+    &.active {
+      transform: rotate(180deg);
+
+      &:before {
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  &__description {
+    padding: 18px 0;
+    color: @color[text];
+    max-width: 800px;
+    .fontNunito(400);
+    .fontSize( 18px, 25px );
+
+    @media ( max-width: @sizes[ maxSM ] ) {
+      width: 100%;
+    }
+  }
+}
+
+

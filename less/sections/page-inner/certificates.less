@@ -1,0 +1,33 @@
+.certificates {
+  position: relative;
+  padding: clamp(40px, 7vw, 64px) 0 clamp(60px, 9vw, 100px);
+  background: @background[main]; 
+  width: 100%;
+
+  &#certificates .certificates__wrap.container {
+    position: relative;
+    margin-right: 0;
+    max-width: calc((100% - 1316px)/ 2 + 1045px);
+    z-index: 1;
+  }
+
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  h3 {
+    .font( 700 );
+    .fontSize( 32px, 34px );
+    margin: 0;
+  }
+
+  &__list {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    align-items: flex-start;
+    margin-top: clamp(25px, 4vw, 20px);
+  }
+
+}

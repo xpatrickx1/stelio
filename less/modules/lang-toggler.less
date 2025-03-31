@@ -1,0 +1,61 @@
+.header .wpm-language-switcher {
+  color: #B7B7B7;
+  display: flex;
+  position: relative;
+  gap: 30px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 55%;
+    bottom: 0;
+    top: calc(50% - 8px);
+    width: 1px;
+    height: 15px;
+    background: #CECECE;
+  }
+    
+  @media (max-width: @sizes[maxSM]) {
+    margin-left: auto;
+    margin-right: 0;
+    margin-top: 40px;
+  }
+
+  li.active span {
+    color: #171717;
+    .font( 600 );
+    .fontSize(14px, 44px);
+    text-align: center;
+    transition: @transition;
+
+    &:hover, &:active {
+      color: #333333;
+    }
+  }
+
+
+  li a span {
+    .font( 600 );
+    .fontSize(14px, 44px);
+    color: #CECECE;
+    transition: @transition;
+
+    &:hover, &:active {
+      color: #333333;
+    }
+  }
+
+  li {
+    cursor: pointer;
+  }
+
+  li span img {
+    display: none;
+  }
+
+  .wpm-item-language-uk  a img, .wpm-item-language-ru a img {
+      display: none;
+  }
+
+}
+  

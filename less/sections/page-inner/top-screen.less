@@ -1,0 +1,216 @@
+.top-screen {
+  position: relative;
+  padding: clamp(100px, 14vw, 130px) 0 clamp(60px, 7vw, 90px);
+  background: @background[main];
+  overflow: hidden;
+
+  @media ( max-width: @sizes[ maxLG ] ) {
+    padding: 120px 0 60px;
+  }
+
+  @media ( max-width: @sizes[ maxSM ] ) {
+    padding: 90px 0 60px;
+  }
+
+  h1 {
+    max-width: 780px;
+  }
+
+  &__wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: clamp(15px, 2vw, 23px);
+  }
+
+  &__top, &__bottom {
+    display: flex;
+    align-items: stretch;
+    gap: clamp(15px, 2vw, 23px);
+    max-width: 100%;
+
+    @media ( max-width: @sizes[ maxLG ] ) {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__top {
+    @media ( max-width: @sizes[ maxLG ] ) {
+      order: 2;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: clamp(30px, 4vw, 48px);
+
+    @media ( max-width: @sizes[ maxSM ] ) {
+      order: 1;
+    }
+
+    &--left {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      flex: 1 0 auto;
+      max-width: 853px;
+      
+
+      @media ( max-width: @sizes[ maxLG ] ) {
+        flex-direction: column;
+        max-width: 100%;
+      }
+    }
+  }
+
+  h2 {
+    width: 100%;
+    max-width: 380px;
+    .fontSize(clamp(25px, 3vw, 36px), clamp(30px, 3vw, 39px));
+    .fontNunito(700);
+  }
+  
+
+  &__description {
+    .fontSize(clamp(14px, 2vw, 18px), clamp(18px, 3vw, 25px));
+    font-weight: 400;
+    width: 385px;
+    max-width: 48%;
+    
+    @media ( max-width: @sizes[ maxLG ] ) {
+      max-width: 100%;
+    }
+  }
+
+  .button--main {
+    margin: 35px 0 0;
+    max-width: 252px;
+    max-height: 48px;
+
+    @media ( max-width: @sizes[ maxLG ] ) {
+      margin-top: 24px;
+      margin-bottom: 48px;
+    }
+  }
+  
+  &--left {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 779px;
+    width: 60%;
+    height: 100%;
+    aspect-ratio: 780 / 461;
+    overflow: hidden;
+
+    @media ( max-width: @sizes[ maxLG ] ) {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    @media ( min-width: @sizes[ minLG ] ) {
+      height: 461px;
+    }
+
+    img {
+      position: absolute;
+      height: auto;
+      width: auto;
+      min-width: 100%;
+      margin: 0;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &--right {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(15px, 2vw, 23px);
+    width: 39%;
+
+    @media ( max-width: @sizes[ maxLG ] ) {
+      max-width: 100%;
+      flex-direction: row;
+      width: 100%;
+    }
+
+    @media  (max-width: @sizes[maxMD]) {
+      flex-direction: column;
+    }
+
+    .top-screen__img {
+      position: relative;
+      aspect-ratio: 256 / 109;
+      overflow: hidden;
+      height: 218px;
+
+      img {
+        position: absolute;
+        height: auto;
+        width: auto;
+        min-width: 100%;
+        min-height: 100%;
+        margin: 0;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    
+  }
+
+  &__imgs {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0;
+
+    img {
+      width: 100%;
+      height: auto;
+      min-height: 65vh;
+      object-fit: cover;
+      animation: imageAnimation 5s linear infinite;
+    }
+
+    img:last-child {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      animation-delay: 2.5s;
+    }
+  }
+
+  @keyframes imageAnimation {
+    0% {
+      opacity: 1;
+  }
+  22% {
+      opacity: 1;
+  }
+  27% {
+      opacity: 0;
+  }
+  72% {
+      opacity: 0;
+  }
+  77% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 1;
+  }
+  }
+
+}

@@ -1,0 +1,64 @@
+.advantage {
+  position: relative;
+  padding: 66px 0 20px;
+  background: @background[white];
+
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+
+    @media ( max-width: @sizes[ maxLG ] ) {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__top {
+    max-width: 245px;
+  }
+
+  h3 {
+    .fontNunito(700);
+    .fontSize(24px, 25px);
+    margin: 0 0 12px;
+  }
+
+  &__description {
+    .fontNunito(400);
+    .fontSize(14px, 19px);
+  }
+
+  &__info {
+    .fontNunito(500);
+    .fontSize(18px, 39px);
+    color: @color[accent];
+    margin: 12px 0 24px;
+  }
+
+  
+
+  &__list {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+
+    @media (max-width: @sizes[maxSM]) {
+      flex-direction: column;
+      margin-top: clamp(20px, 5vw, 48px);
+    }
+
+    .item {
+      width: 100%;
+      
+      @media (min-width: @sizes[minSM]) {
+        width: 48%;
+      }
+    }
+
+    .item__title {
+      .font( 400 );
+      .fontSize( 14px, 19px );
+      margin: 12px 0 0;
+    }
+  }
+  
+}

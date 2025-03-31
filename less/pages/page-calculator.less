@@ -1,0 +1,42 @@
+@import "../base/fonts";
+@import "../base/mixins";
+@import "../base/variables";
+@import "../base/buttons";
+@import "../base/common";
+@import "../base/typography";
+@import "../base/animate";
+@import "../base/grid";
+
+@import '../sections/page-calculator/top-screen';
+@import '../modules/universal/calculator.less';
+@import '../modules/universal/order.less';
+@import '../modules/universal/call.less';
+@import '../modules/universal/reviews.less';
+
+
+.calculator {
+  background: @background[white];
+
+  @media (max-width: @sizes[maxSM]) {
+    padding: 170px 0 60px;
+  }
+}  
+
+
+#order {
+  &:before {
+  content: '';
+  position: absolute;
+  bottom: -147px;
+  left: -130px;
+  width: 300px;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: right 0;
+  background-image: url('../images/page-calculator/orderbg2.png');
+    }
+
+    &__wrap {
+    align-items: center;
+    }
+}

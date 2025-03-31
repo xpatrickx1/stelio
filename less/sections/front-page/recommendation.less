@@ -1,0 +1,135 @@
+.recommendation {
+  position: relative;
+  padding: clamp(30px, 7vw, 66px) 0;
+
+  @media ( max-width: @sizes[ maxSM ] ) {
+    padding: 15px 0;
+  }
+
+  &--left {
+    max-width: 558px;
+    margin: clamp(30px, 7vw, 80px) 0 clamp(30px, 7vw, 95px) clamp(20px, 10vw, 134px);
+
+    @media ( max-width: @sizes[ maxLG ] ) {
+      margin: clamp(30px, 7vw, 80px) 16px clamp(30px, 7vw, 95px);
+     }
+  }
+
+  &__wrap.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    @media ( max-width: @sizes[ maxMD ] ) {
+     flex-wrap: wrap;
+     justify-content: space-between;
+     gap: 5px;
+    }
+
+    @media ( max-width: @sizes[ maxSM ] ) {
+      flex-direction: column;
+    }
+
+  }
+
+  h5 {
+    .fontNunito(700);
+    .fontSize(clamp(18px, 2vw, 24px), clamp(20px, 2vw, 30px));
+    color: @color[black];
+    max-width: 310px;
+    margin: 0 0 20px;
+    width: 30%;
+
+    @media ( max-width: @sizes[ maxLG ] ) {
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  &__center {
+    max-width: 405px;
+    width: 100%;
+
+    @media ( max-width: @sizes[ maxMD ] ) {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+     }
+  }
+
+  &__reviews {
+    width: fit-content;
+
+    @media ( max-width: @sizes[ maxLG ] ) {
+      margin-left: auto;
+      max-width: 405px;
+      width: 100%;
+      margin-top: 36px;
+     }
+
+     @media ( max-width: @sizes[ maxSM ] ) {
+      margin-left: 0;
+     }
+  }
+
+  &__description {
+    margin-bottom: clamp(20px, 3vw, 34px);
+    .fontSize(14px, 19px);
+  }
+
+
+  &__reviews--title {
+    .fontNunito(700);
+    .fontSize(clamp(18px, 2vw, 24px), clamp(20px, 2vw, 30px));
+    margin: 0 0 2px;
+  }
+
+  &__reviews--center {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__stars {
+    display: flex;
+    align-items: center;
+    margin: 0 12px;
+    height: 30px;
+
+    img {
+      margin-top: -2px;
+    }
+  }
+
+  &__reviews--rating {
+    position: relative;
+    display: flex;
+    align-items: center;
+    .fontSize(16px, 30px);
+    color: #8B8686;
+
+    strong {
+      .fontNunito(700);
+      color: @color[black];
+    }
+  }
+
+  &__reviews--text {
+    .fontSize(16px, 30px);
+  }
+
+  &__reviews--maps {
+    display: block;
+    .fontSize(18px, 30px);
+    margin: clamp(25px, 3vw, 41px) 0 0;
+    color: @color[link];
+    text-decoration: underline;
+  }
+
+  .button--main {
+    max-width: 252px;
+  }
+
+
+  
+}

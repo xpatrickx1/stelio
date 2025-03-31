@@ -1,0 +1,191 @@
+.top-screen {
+  position: relative;
+  padding: clamp(100px, 14vw, 130px) 0 clamp(60px, 7vw, 90px);
+  background: @background[main];
+
+  @media ( max-width: @sizes[ maxLG ] ) {
+    padding: 120px 0 60px;
+  }
+
+  @media ( max-width: @sizes[ maxSM ] ) {
+    padding: 90px 0 60px;
+  }
+
+  h1 {
+    max-width: 780px;
+  }
+
+  &__wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: clamp(15px, 2vw, 23px);
+  }
+
+  &__top, &__bottom {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+
+    @media ( max-width: @sizes[ maxLG ] ) {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__top {
+    @media ( max-width: @sizes[ maxSM ] ) {
+      order: 2;
+    }
+  }
+
+  &--left {
+    max-width: 779px;
+  }
+
+  &__bottom--right {
+    display: flex;
+    gap: clamp(20px, 3vw, 38px);;
+
+    @media ( max-width: @sizes[ maxLG ] ) {
+      flex-wrap: wrap;
+    }
+
+    .top-screen__description {
+      max-width: 353px;
+      
+      &:last-child {
+        max-width: 310px;
+      }
+    }
+  }
+
+  .button--main {
+    max-width: 252px;
+
+    @media ( max-width: @sizes[ maxSM ] ) {
+      margin-top: 24px;
+      margin-bottom: 48px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: clamp(30px, 4vw, 48px);
+
+    @media ( max-width: @sizes[ maxLG ] ) {
+      flex-wrap: wrap;
+    }
+
+    @media ( max-width: @sizes[ maxSM ] ) {
+      order: 1;
+      margin-bottom: 24px;
+    }
+
+    &--right {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(30px, 4vw, 60px);
+    }
+
+    &--wrp {
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamp(15px, 3vw, 36px);
+      
+
+      @media ( max-width: @sizes[ maxLG ] ) {
+        flex-wrap: wrap;
+      }
+    }
+  }
+
+  h2 {
+    width: 100%;
+    max-width: 380px;
+    .fontSize(clamp(25px, 3vw, 36px), clamp(30px, 3vw, 39px));
+    .fontNunito(700);
+  }
+  
+
+  &__description {
+    .fontSize(clamp(14px, 2vw, 18px), clamp(18px, 3vw, 25px));
+    font-weight: 400;
+    max-width: 429px;
+  }
+
+
+  &--left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 779px;
+    width: 100%;
+
+    @media ( max-width: @sizes[ maxLG ] ) {
+      max-width: 100%;
+    }
+
+    @media ( min-width: @sizes[ minLG ] ) {
+      width: 61%;
+    }
+  }
+
+  &--right {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(15px, 2vw, 23px);
+
+    @media ( min-width: @sizes[ minXS ] ) and ( max-width: @sizes[ maxLG ] ) {
+      flex-direction: row;
+
+      img {
+        width: 49%;
+      }
+    }
+
+    @media ( min-width: @sizes[ minLG ] ) {
+      width: 39%;
+    }
+
+    @media ( max-width: @sizes[ maxLG ] ) {
+      max-width: 100%;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(15px, 3vw, 20px);
+    width: fit-content;
+    margin: 0;
+
+    @media ( max-width: @sizes[ maxSM ] ) {
+      flex-direction: column;
+    }
+  }
+
+  .item {
+    position: relative;
+    .font( 700 );
+    .fontSize( 18px, 24px );
+    padding-left: 36px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 24px;
+      left: 0;
+      top: 0px;
+      min-width: 24px;
+      height: 23px;
+      margin-right: 13px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M11.8053 0.27832C18.1466 0.27832 23.2869 5.41864 23.2869 11.7599C23.2869 18.1012 18.1466 23.2415 11.8053 23.2415C5.46405 23.2415 0.32373 18.1012 0.32373 11.7599C0.32373 5.41864 5.46405 0.27832 11.8053 0.27832ZM6.12117 11.909C5.69743 11.4402 5.73398 10.7164 6.2018 10.2936C6.67054 9.8699 7.39431 9.90645 7.81712 10.3743L10.6774 13.5346L16.8574 7.15107C17.299 6.69732 18.0237 6.687 18.4774 7.12857C18.9312 7.57013 18.9415 8.29482 18.4999 8.74857L11.4715 16.0086L11.4697 16.0067C11.4528 16.0236 11.435 16.0414 11.4172 16.0573C10.9494 16.4811 10.2256 16.4454 9.80184 15.9767L6.12024 11.9099L6.12117 11.909Z' fill='black'/%3E%3C/svg%3E%0A");
+    }
+
+  }
+
+}

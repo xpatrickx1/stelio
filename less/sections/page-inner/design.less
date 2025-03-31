@@ -1,0 +1,77 @@
+.design {
+  position: relative;
+  padding: 66px 0 clamp(60px, 5vw, 100px);
+  background: @background[white];
+
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+
+    @media ( max-width: @sizes[ maxLG ] ) {
+      flex-wrap: wrap;
+    }
+  }
+
+  h3 {
+    .fontNunito(700);
+    .fontSize(24px, 25px);
+    margin: 0 0 12px;
+  }
+
+  &__description {
+    .fontNunito(400);
+    .fontSize(14px, 19px);
+  }
+
+  &__top {
+    @media (max-width: @sizes[maxLG]) {
+      max-width: 100%;
+    }
+
+    @media (min-width: @sizes[minLG]) {
+      max-width: 245px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    max-width: 985px;
+
+    @media (max-width: @sizes[maxSM]) {
+      flex-direction: column;
+      margin-top: clamp(20px, 5vw, 48px);
+    }
+
+    .item {
+      width: 100%;
+      
+      @media (min-width: @sizes[minSM]) {
+        width: 48%;
+      }
+
+      &__img {
+        position: relative;
+        overflow: hidden;
+        max-width: 480px;
+
+        img {
+          aspect-ratio: 480 / 343;
+          height: auto;
+          width: auto;
+          min-width: 100%;
+          min-height: 100%;
+          margin: 0;
+        }
+      }
+    }
+
+    .item__title {
+      .font( 400 );
+      .fontSize( 14px, 19px );
+      margin: 12px 0 0;
+    }
+  }
+  
+}

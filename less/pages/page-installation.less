@@ -1,0 +1,34 @@
+@import "../base/fonts";
+@import "../base/mixins";
+@import "../base/variables";
+@import "../base/buttons";
+@import "../base/common";
+@import "../base/typography";
+@import "../base/animate";
+@import "../base/grid";
+
+@import '../sections/page-installation/top-screen.less';
+@import '../sections/page-installation/content.less';
+@import '../sections/page-installation/sidebar.less';
+@import '../sections/page-installation/quality.less';
+@import '../sections/page-installation/faq.less';
+@import '../sections/page-installation/professionalism.less';
+@import '../sections/page-installation/steps.less';
+@import '../sections/page-installation/features.less';
+@import '../sections/page-inner/reviews.less';
+@import '../modules/universal/call.less';
+
+.reviews {
+    background: @background[main];
+}
+
+.content {
+    padding: 66px 0 0;
+}
+
+.call {
+    padding: clamp(40px,4vw,64px) 0 clamp(60px,12vw,183px);
+    &::after {
+        bottom: -100px;
+    }
+}

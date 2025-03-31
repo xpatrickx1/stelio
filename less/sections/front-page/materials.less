@@ -1,0 +1,124 @@
+.materials {
+  position: relative;
+  padding: 66px 0 20px;
+
+  &__top {
+    max-width: 492px;
+  }
+
+  &__photo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid @color[accent];
+    width: 124px;
+    height: 124px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 107px;
+      height: 107px;
+      border: 1px solid @color[white];
+      border-radius: 50%;
+    }
+
+    img {
+      border-radius: 50%;
+      width: 100px;
+      height: auto;
+    }
+  }
+
+  &__info {
+    .fontNunito(500);
+    .fontSize(18px, 39px);
+    color: @color[accent];
+    margin: 12px 0 24px;
+  }
+
+  
+
+  &__list {
+    display: flex;
+    align-items: flex-start;
+    margin-top: clamp(20px, 5vw, 48px);
+
+    @media (max-width: @sizes[maxSM]) {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .item {
+      width: 100%;
+      padding: 15px;
+      transition: @transition;
+      border-radius: 6px;
+
+      @media (max-width: @sizes[maxSM]) {
+        padding: 16px 0;
+      }
+      
+      @media (min-width: @sizes[minSM]) {
+        width: 50%;
+      }
+
+      @media (min-width: @sizes[minSM]) {
+
+        &:hover {
+          background: #fff;
+          box-shadow: 10px 5px 5px #c5c5C514;
+        }
+
+        a:hover {
+          
+          .item__title {
+          color: @color[accent];
+          }
+        }
+      }
+
+      &__img {
+        position: relative;
+        height: 270px;
+        overflow: hidden;
+
+        @media (max-width: @sizes[maxSM]) {
+          height: 220px;
+        }
+
+        img {
+          position: absolute;
+          height: auto;
+          min-height: 100%;
+          width: auto;
+          min-width: 100%;
+          margin: 0;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+
+    .item__title {
+      .font( 700 );
+      .fontSize( 18px, 34px );
+      margin: 24px 0 6px;
+      transition: @transition;
+      
+      @media (max-width: @sizes[maxSM]) {
+        margin: 6px 0 0;
+      }
+    }
+
+    .item__text {
+      .fontNunito(400);
+      .fontSize(14px, 19px);
+      max-width: 544px;
+    }
+  }
+  
+}
