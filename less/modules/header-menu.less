@@ -202,17 +202,21 @@
   box-shadow: 0px 0px 10px 3px #C5C5C514;
   padding: 0 12px;
   transition: @transition;
-  transform: scaleY(0);
   transform-origin: top;
-  visibility: hidden;
   background: #fff;
   height: 0;
+  visibility: hidden;
+  transform: scaleY(0);
+  display: none;
 
-  &.hiden {
-    height: auto;
+  &.hide {
+    display: block;
+    visibility: hidden;
+    transform: scaleY(0);
   }
 
   &.visible {
+    display: block;
     visibility: visible;
     transform: scaleY(1);
     height: auto;

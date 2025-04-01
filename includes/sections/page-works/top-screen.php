@@ -18,7 +18,7 @@ $works = [
       <?= get_field( 'page_title' ) ? the_field( 'page_title' ) : get_the_title() ?>
     </h1>
 
-    <div class="works__list">
+    <!-- <div class="works__list">
       <?php if (get_bloginfo("language") == 'ru') { 
         $nav_args = array(
           'theme_location' => 'categoty_works_ru',
@@ -34,7 +34,7 @@ $works = [
         );
         wp_nav_menu($nav_args);
       }; ?>
-    </div>
+    </div> -->
     
   </div>
 </section>
