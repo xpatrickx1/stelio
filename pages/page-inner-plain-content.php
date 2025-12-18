@@ -34,6 +34,10 @@ get_header();
   </div>
 </section>
 
+<?php if ( get_field('faq_title') ) : ?>
+  <?php get_template_part( 'includes/modules/faq' ); ?>
+<?php endif; ?>
+
 <?php get_template_part('includes/modules/call')?>
 
 

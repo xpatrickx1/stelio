@@ -7,7 +7,98 @@
 @import "../base/animate";
 @import "../base/grid";
 
-@import '../sections/page-catalog/catalog.less';
-@import '../modules/universal/call.less';
-@import '../modules/universal/reviews.less';
-@import '../modules/universal/faq.less';
+.top-screen {
+    position: relative;
+    padding: clamp(100px, 14vw, 130px) 0 30px;
+    background: @background[main];
+    overflow: hidden;
+  
+    @media ( max-width: @sizes[ maxLG ] ) {
+      padding: 120px 0 60px;
+    }
+  
+    @media ( max-width: @sizes[ maxSM ] ) {
+      padding: 90px 0 60px;
+    }
+  
+    h1 {
+      max-width: 780px;
+    }
+
+    &__wrap {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: clamp(15px, 2vw, 23px);
+        padding-top: 60px;
+    }
+}
+
+.blog {
+  padding: 80px 0 100px;
+  background: #f1f1f1;
+}
+
+.blog__wrap {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+}
+
+@media (max-width: 767px) {
+  .blog__wrap {
+      -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1023px) {
+  .blog__wrap {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 20px;
+  }
+}
+
+.blog__item {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 6px 15px 20px;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 5px 40px 0 rgba(21, 34, 54, .08);
+}
+
+.blog .item__date {
+  display: inline-block;
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 130%;
+  padding: 16px 16px;
+  margin: 20px 0 0;
+}
+
+.blog .item__img {
+  display: block;
+  flex-shrink: 0;
+  width: calc(100% + 18px);
+  height: 150px;
+  position: relative;
+  left: -9px;
+  background-color: #ccc;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.blog h2 {
+  font-family: Poppins, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 130%;
+  margin: 15px 0 0;
+  height: 100%;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}

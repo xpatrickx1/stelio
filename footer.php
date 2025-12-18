@@ -3,6 +3,19 @@
 <?php include(locate_template('main-vars.php', true)); ?>
 
 <?php get_template_part('includes/modules/popup')?>
+<?php get_template_part('includes/modules/popup2')?>
+<?php get_template_part('includes/modules/popupQuiz')?>
+
+<a 
+  href="#"
+  rel="nofollow" id="callQuizPopup"
+  class="button--second button--call button--mobile">
+  <?php if (get_bloginfo("language") == 'ru') {
+        echo 'Беспланый замер' ;
+      } else {
+        echo 'Безкоштовний замір';
+      }; ?>
+</a>
 
 <a class="viber" href="viber://chat?number=%2B380671287636">
   <img 

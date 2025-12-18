@@ -108,8 +108,23 @@ function ox_adding_scripts()
         // для категорий
         if (is_category('catalog')) {
             wp_dequeue_style('inner2');
-            wp_enqueue_style('blog', get_template_directory_uri() . '/css/page-catalog.min.css', array(), time());
-            wp_enqueue_script('blog', get_template_directory_uri() . '/js/min/page-catalog.min.js', null, time(), true);
+            wp_enqueue_style('catalog', get_template_directory_uri() . '/css/page-catalog.min.css', array(), time());
+            wp_enqueue_script('catalog', get_template_directory_uri() . '/js/min/page-catalog.min.js', null, time(), true);
+        }
+
+        if (is_category('blog')) {
+            wp_dequeue_style('blog');
+            wp_dequeue_style('post');
+            wp_dequeue_script('post');
+            wp_enqueue_style('blog', get_template_directory_uri() . '/css/page-blog.min.css', array(), time());
+            wp_enqueue_script('blog', get_template_directory_uri() . '/js/min/page-blog.min.js', null, time(), true);
+        }
+
+        if (is_category('news')) {
+            wp_dequeue_style('blog');
+            wp_dequeue_style('post');
+            wp_dequeue_script('post');
+            wp_enqueue_style('news', get_template_directory_uri() . '/css/page-blog.min.css', array(), time());
         }
 
         if ( is_category('works') ) {
@@ -118,12 +133,14 @@ function ox_adding_scripts()
              wp_deregister_script('blog-js');
         }
 
-        if (get_post_meta( get_the_ID(), '_wp_page_template', true ) === 'single-works.php') {
-            wp_dequeue_style('blog');
+        if (is_single() && get_post_meta(get_the_ID(), '_wp_page_template', true) === 'single-blog.php') {
             wp_dequeue_style('post');
-            wp_dequeue_script('post');
-            wp_enqueue_style('single-works', get_template_directory_uri() . '/css/page-single-works.min.css', array(), time());
-            // wp_enqueue_script('single-works-js', get_template_directory_uri() . '/js/min/page-single-works.js', null, time(), true);
+            wp_enqueue_style('single-blog', get_template_directory_uri() . '/css/page-blog-post.min.css', array(), time());
+        }
+
+        if (is_single() && get_post_meta(get_the_ID(), '_wp_page_template', true) === 'single-news.php') {
+            wp_dequeue_style('post');
+            wp_enqueue_style('single-news', get_template_directory_uri() . '/css/page-blog-post.min.css', array(), time());
         }
 
         //для 404 страницы
@@ -632,3 +649,11 @@ function custom_wpseo_title ($title) {
 $site_name = get_bloginfo('name');
 return get_the_title() . ' | ' . $site_name;
 }
+
+
+function stelio_quiz_iframe() {
+    return '<iframe src="https://quiz.stelio.com.ua/" width="100%" height="650" style="border:none;border-radius:10px;" loading="lazy"></iframe>';
+  }
+  add_shortcode('stelio_quiz', 'stelio_quiz_iframe');
+
+  

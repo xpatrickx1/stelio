@@ -10,6 +10,9 @@ $(document).ready(() => {
     });
 });
 
+console.log();
+
 //= include components/helpers.js
 //= include components/modules/popup.js
+//= include components/modules/phone-mask.js
 

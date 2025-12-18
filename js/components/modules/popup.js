@@ -28,4 +28,10 @@ popupTriggers.forEach(trigger => {
     popup(trigger, '#popup');
 });
 
-// popup('#headerCallbackPopup', '#popupCalc');
+popup('#headerCallbackPopup', '#popup2');
+
+popup('#headerQuizPopup', '#popupQuiz');
+
+popup('#callQuizPopup', '#popupQuiz');
+
+popup('#callTopQuizPopup', '#popupQuiz');
