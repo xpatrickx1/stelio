@@ -1,6 +1,7 @@
+
 <?php
 /*
-* Template Name: Blog post
+* Template Name: News post
  * Template Post Type: post, page
 */
 ?>
@@ -12,7 +13,7 @@
 
         <div class="top-screen--left">
 
-            <div class="tbreadcrumbs">
+            <div class="breadcrumbs">
             <span><a href="<?= home_url(); ?>"><?= get_bloginfo("language") == 'ru' ? 'Натяжные потолки в Киеве' : 'Натяжні стелі у Києві' ?></a></span>
                 <span class="breadcrumbs__slash"> / </span>
                 <span><a href="/news/"><?= get_bloginfo("language") == 'ru' ? 'Новости' : 'Новини' ?></a></span>
@@ -31,26 +32,27 @@
             <?php endif; ?>
         </div>
 
-        <div class="top-screen--right">
-            <img src="<?= has_post_thumbnail() ? get_the_post_thumbnail_url() : bloginfo('template_url') . '/images/features/blog.jpg' ?>)" alt="" title="" width="1px" height="1px" />
-        </div>
+        
 
     </div>
 </section>
 
 <section class="content">
     <div class="container">
-
-        <div class="content-content__wrap">
-            <?php
-                if (have_posts() ) {
-                    while (have_posts()) : the_post();
-                        echo the_content();
-                    endwhile;
-                }
-            ?>
+        <div class="content__wrap">
+            <div class="content--left">
+                <img src="<?= has_post_thumbnail() ? get_the_post_thumbnail_url() : bloginfo('template_url') . '/images/features/blog.jpg' ?>)" alt="" title="" width="1px" height="1px" />
+            </div>
+            <div class="content-content__wrap">
+                <?php
+                    if (have_posts() ) {
+                        while (have_posts()) : the_post();
+                            echo the_content();
+                        endwhile;
+                    }
+                ?>
+            </div>
         </div>
-
     </div>
 </section>
 
@@ -76,29 +78,26 @@ function rand_posts()
 
     $the_query = new WP_Query($args);
     if ($the_query->have_posts()) {
-        $string .= '<div class="post-recent__wrap ">';
-        $views = get_post_meta( $post->ID, 'views', true ) ? get_post_meta( $post->ID, 'views', true ) : '0';
-
+        $string .= '<div class="post-recent__wrap">';
+        
         while ($the_query->have_posts()) {
             $the_query->the_post();
             $postID = get_the_id();
-            $postThumbnail = get_the_post_thumbnail($postID, array(), array("class" => "item__img"));
-            $postThumbnailPlaceholder = '<img src="' . get_bloginfo('template_url') . '/images/loader.gif' . '" data-src="' . get_bloginfo('template_url') . '/images/features/blog.jpg' . '"  class="lazy item__img">';
-            $postThumb = $postThumbnail ? $postThumbnail : $postThumbnailPlaceholder ;
+            
             $string .= '
-  <article id="post-' . $postID . '" class="post-recent__item item">
-    <div class="post-recent__thumbnail">' . $postThumb . '</div>
-    <div class="item__info">
-     
-        <a href="' . get_permalink() . '" class="item__title">' . get_the_title() . '</a>
-
-          <div class="item--bottom">
-
-            <div class="item__date">' . get_the_date('F d, Y') . '</div>
-
-        </div>    
-  </article>';
+            <article id="post-' . $postID . '" class="blog__item item">
+                <a href="' . get_permalink() . '" class="item__img" style="background-image: url(' . (has_post_thumbnail() ? get_the_post_thumbnail_url() : get_bloginfo('template_url') . '/images/features/blog.jpg') . ')"></a>
+                <div class="item--left">
+                    <div class="item__date">' . get_the_date('F d, Y') . '</div>
+                    <div class="item__title">
+                        <a href="' . get_permalink() . '">
+                            ' . get_the_title() . '
+                        </a>
+                    </div>
+                </div>
+            </article>';
         }
+        
         $string .= '</div>';
         /* Restore original Post Data */
         wp_reset_postdata();

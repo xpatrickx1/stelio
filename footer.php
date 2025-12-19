@@ -11,9 +11,9 @@
   rel="nofollow" id="callQuizPopup"
   class="button--second button--call button--mobile">
   <?php if (get_bloginfo("language") == 'ru') {
-        echo 'Беспланый замер' ;
+        echo 'Узнай стоимость за 1 мин' ;
       } else {
-        echo 'Безкоштовний замір';
+        echo 'Дізнайся вартісь за 1 хв';
       }; ?>
 </a>
 
