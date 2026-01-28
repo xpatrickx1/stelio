@@ -63,7 +63,7 @@
           height="1px"
         /> -->
         </div>
-        <div class="top-screen__img">
+        <div class="top-screen__team">
         <img 
           src="<?= bloginfo('template_url') . '/images/loader.gif' ?>" 
           data-src="<?= get_field('team_top_2')['url'] ? get_field('team_top_2')['url'] : bloginfo('template_url') . '/images/page-contacts/contacts2.webp' ?>"

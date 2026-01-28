@@ -97,6 +97,18 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
+
+      @media ( max-width: @sizes[ maxMD ] ) {
+        position: relative;
+        height: auto;
+        width: 100%;
+        min-width: 100%;
+        min-height: auto;
+        max-width: 777px;
+        left: initial;
+        top: initial;
+        transform: none;
+      }
     }
   }
 

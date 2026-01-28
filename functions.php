@@ -117,7 +117,6 @@ function ox_adding_scripts()
             wp_dequeue_style('post');
             wp_dequeue_script('post');
             wp_enqueue_style('blog', get_template_directory_uri() . '/css/page-blog.min.css', array(), time());
-            wp_enqueue_script('blog', get_template_directory_uri() . '/js/min/page-blog.min.js', null, time(), true);
         }
 
         if (is_category('news')) {
@@ -125,6 +124,7 @@ function ox_adding_scripts()
             wp_dequeue_style('post');
             wp_dequeue_script('post');
             wp_enqueue_style('news', get_template_directory_uri() . '/css/page-blog.min.css', array(), time());
+            wp_enqueue_style('news', get_template_directory_uri() . '/css/page-blog.min.js', array(), time());
         }
 
         if ( is_category('works') ) {
@@ -147,6 +147,14 @@ function ox_adding_scripts()
         if (is_404()) {
             wp_enqueue_style('error', get_template_directory_uri() . '/css/page-error.min.css', array(), time());
         }
+
+        // if (is_category() || is_home() || is_archive()) {
+        //     wp_localize_script('load-more-ajax', 'ajax_object', array(
+        //         'ajax_url' => admin_url('admin-ajax.php'),
+        //         'nonce'    => wp_create_nonce('load_more_nonce'),
+        //         'language' => get_bloginfo("language")
+        //     ));
+        // }
     }
 }
 
@@ -653,7 +661,83 @@ return get_the_title() . ' | ' . $site_name;
 
 function stelio_quiz_iframe() {
     return '<iframe src="https://quiz.stelio.com.ua/" width="100%" height="650" style="border:none;border-radius:10px;" loading="lazy"></iframe>';
-  }
-  add_shortcode('stelio_quiz', 'stelio_quiz_iframe');
+}
+add_shortcode('stelio_quiz', 'stelio_quiz_iframe');
 
   
+add_action('wp_ajax_load_more_posts', 'load_more_posts_callback');
+add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts_callback');
+
+function load_more_posts_callback() {
+    
+    check_ajax_referer('load_more_nonce', 'nonce');
+    
+    $page = isset($_POST['page']) ? intval($_POST['page']) : 2;
+    $offset = isset($_POST['offset']) ? intval($_POST['offset']) : 8;
+    $category = isset($_POST['category']) ? intval($_POST['category']) : '';
+    $posts_per_page = isset($_POST['posts_per_page']) ? intval($_POST['posts_per_page']) : 8;
+    
+    error_log('Page: ' . $page);
+    error_log('Offset: ' . $offset);
+    error_log('Category: ' . $category);
+    error_log('Posts per page: ' . $posts_per_page);
+    
+    $args = [
+        'post_type'      => 'post',
+        'posts_per_page' => $posts_per_page,
+        'offset'         => $offset,
+        'post_status'    => 'publish',
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    ];
+    
+    if (!empty($category)) {
+        $args['cat'] = $category;
+    }
+    
+    $query = new WP_Query($args);
+    
+    error_log('Found posts: ' . $query->found_posts);
+    error_log('Query SQL: ' . $query->request);
+    
+    if ($query->have_posts()) :
+        $count = 0;
+        while ($query->have_posts()) : $query->the_post();
+            $count++;
+            ob_start();
+            ?>
+            <article class="blog__item item" data-id="<?= get_the_ID() ?>">
+                <a href="<?php the_permalink(); ?>" class="item__img" style="background-image: url(<?= has_post_thumbnail() ? get_the_post_thumbnail_url() : get_template_directory_uri() . '/images/features/blog.jpg' ?>)"></a>
+                <div class="item--left"></div>
+                <div class="item__date"><?php echo get_the_date('F d, Y'); ?></div>
+                <h2 class="item__title">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php the_title(); ?>
+                    </a>
+                </h2>
+            </article>
+            <?php
+            echo ob_get_clean();
+        endwhile;
+        error_log('Posts output: ' . $count);
+        wp_reset_postdata();
+    else :
+        error_log('No more posts found');
+        echo 'no_more_posts';
+    endif;
+    
+    wp_die();
+}
+  
+add_action('wp_enqueue_scripts', 'load_more_scripts');
+function load_more_scripts() {
+    if (is_category() || is_home() || is_archive()) {
+        
+        wp_localize_script('load-more-ajax', 'ajax_object', array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce'    => wp_create_nonce('load_more_nonce'),
+            'language' => get_bloginfo("language")
+        ));
+    }
+}
+wp_enqueue_script('load-more-ajax', get_template_directory_uri() . '/js/plugins/load-more.js', array('jquery'), '1.0', true);

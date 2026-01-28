@@ -7,6 +7,7 @@ get_header();
     <div class="seo-page">
         <div class="container container--900">
             <?php
+            
             if (have_posts()) {
                 the_post();
                 the_content();
