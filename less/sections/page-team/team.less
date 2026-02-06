@@ -1,0 +1,128 @@
+.team {
+  position: relative;
+  padding: 60px 0 0;
+  background: @background[main];
+
+  @media ( max-width: @sizes[ maxLG ] ) {
+    padding: 0 0 60px;
+  }
+
+  @media ( max-width: @sizes[ maxSM ] ) {
+    padding: 0 0 60px;
+  }
+
+  &__wrap {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: clamp(15px, 3vw, 30px);
+    margin: 0 auto clamp(30px, 4vw, 40px);
+  }
+
+  .team__title {
+    font-size: 36px;
+    line-height: 39px;
+    .fontNunito(700);
+
+    @media ( max-width: @sizes[ maxSM ] ) {
+      font-size: 22px;
+      line-height: 28px;
+    }
+  }
+
+  .team__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 24px;
+    width: 100%;
+
+    @media ( max-width: @sizes[ maxSM ] ) {
+      gap: 40px 24px;
+    }
+  }
+
+  .item {
+    width: 23%;
+    max-width: 310px;
+    
+    @media ( max-width: @sizes[ maxSMPlus ] ) {
+      width: 31%;
+    }
+
+    @media ( max-width: @sizes[ maxSM ] ) {
+      width: 50%;
+      min-width: 310px;
+    }
+
+    @media ( max-width: @sizes[ maxXS ] ) {
+      width: 100%;
+    }
+  }
+
+  .item__img {
+    position: relative;
+    height: 450px;
+    width: 100%;
+    overflow: hidden;
+
+    // @media ( max-width: @sizes[ maxLG ] ) {
+    //   max-width: 49%;
+    // }
+
+    // @media ( max-width: @sizes[ maxSM ] ) {
+    //   max-width: 100%;
+    // }
+
+    img {
+      position: absolute;
+      height: auto;
+      width: auto;
+      min-width: 100%;
+      min-height: 100%;
+      max-height: 330px;
+      max-width: 800px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .item__img {
+    .avatar {
+      display: block;
+    }
+    .avatar__hover {
+      display: none;
+    }
+
+  }
+
+  .item__img:hover {
+    .avatar {
+      display: none;
+    }
+    .avatar__hover {
+      display: block;
+    }
+  }
+
+  .item__name {
+    width: fit-content;
+    font-size: 22px;
+    line-height: 28px;
+    .fontNunito(900);
+    margin: 20px 0 0;
+    text-transform: uppercase;
+  }
+
+  .item__position {
+    width: fit-content;
+    font-size: 16px;
+    line-height: 25px;
+    .fontNunito(400);
+    text-transform: uppercase;
+    color: #878787;
+  }
+}

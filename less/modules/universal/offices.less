@@ -1,0 +1,60 @@
+.offices {
+  position: relative;
+  padding: clamp(100px, 14vw, 70px) 0 clamp(100px, 15vw, 200px);
+  background: @background[white];
+
+  @media ( max-width: @sizes[ maxLG ] ) {
+    padding: 120px 0 60px;
+  }
+
+  @media ( max-width: @sizes[ maxSM ] ) {
+    padding: clamp(60px, 7vw, 90px) 0 60px;
+  }
+
+  h3 {
+    .font( 700 );
+    .fontSize( 32px, 39px );
+    width: fit-content;
+    max-width: 500px;
+    margin: 0 0 24px;
+    text-align: left;
+  }
+
+  &__list-title, &__description {
+    .font( 400 );
+    .fontSize( 18px, 25px );
+  }
+
+  &__list-title {
+    margin: 12px 0 24px;
+  }
+
+  &__wrap {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    z-index: 1;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 6px;
+  }
+
+  .item {
+    .font( 600 );
+    .fontSize( 16px, 22px );
+    padding: 13px 24px;
+    background: #F9F9F9;
+    border: 1px solid #F9F9F9;
+    border-radius: 6px;
+    transition: all ease-in-out 0.3s;
+
+    &:hover {
+      background: #dadada;
+      border: 1px solid #dadada;
+    }
+  }
+}

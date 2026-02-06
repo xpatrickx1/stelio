@@ -114,3 +114,27 @@
   justify-content: center;
   padding: 70px;
 }
+
+.blog-pagination {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.blog-pagination .page-numbers {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 0 4px;
+  border: 1px solid #ddd;
+  text-decoration: none;
+  color: #000000;
+}
+
+.blog-pagination .page-numbers.current {
+  background: linear-gradient(95.62deg, #000000 40.55%, #000000 102.32%);
+  color: white;
+  border-color: #000000;
+}
+
+.blog-pagination .page-numbers:hover:not(.current) {
+  background: #f5f5f5;
+}

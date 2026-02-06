@@ -35,3 +35,23 @@ popup('#headerQuizPopup', '#popupQuiz');
 popup('#callQuizPopup', '#popupQuiz');
 
 popup('#callTopQuizPopup', '#popupQuiz');
+
+setTimeout(function() {
+    if (!localStorage.getItem('quizPopupShown')) {
+        $('#headerQuizPopup').click();
+        localStorage.setItem('quizPopupShown', 'true');
+        const expiryDate = new Date();
+        expiryDate.setDate(expiryDate.getDate() + 1);
+        localStorage.setItem('quizPopupExpiry', expiryDate.getTime());
+    }
+}, 15000);
+  
+function checkPopupExpiry() {
+    const expiry = localStorage.getItem('quizPopupExpiry');
+    if (expiry && Date.now() > parseInt(expiry)) {
+        localStorage.removeItem('quizPopupShown');
+        localStorage.removeItem('quizPopupExpiry');
+    }
+}
+  
+checkPopupExpiry();

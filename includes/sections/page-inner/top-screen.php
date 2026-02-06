@@ -58,10 +58,26 @@
         </h1>
         <div class="top-screen__bottom--left">
           <div class="top-screen__description">
-            <?= get_field('top_screen_description_1') ? the_field('top_screen_description_1') : 'Теневое примыкание натяжного потолка создаёт визуальный эффект — между потолочной конструкцией и стеной пролегает глубокая тень. ' ?>
+            <?php if ( get_field('top_screen_description_1'))  { 
+              echo get_field('top_screen_description_1') ;
+              } else { 
+              if (get_bloginfo("language") == 'ru') {
+                echo 'Теневое примыкание натяжного потолка создаёт визуальный эффект — между потолочной конструкцией и стеной пролегает глубокая тень.' ;
+              } else {
+                echo 'Тіньове примикання натяжної стелі створює візуальний ефект – між стельовою конструкцією та стіною пролягає глибока тінь.';
+              } 
+            }; ?>
           </div>
           <div class="top-screen__description">
-            <?= get_field('top_screen_description2') ? the_field('top_screen_description2') : 'Из-за этого кажется, что потолочная «плита» парит в воздухе, не соприкасаясь со стеной. Они хорошо смотрятся в современных и минималистичных интерьерах.' ?>
+            <?php if ( get_field('top_screen_description2'))  { 
+              echo get_field('top_screen_description2') ;
+              } else { 
+              if (get_bloginfo("language") == 'ru') {
+                echo 'Из-за этого кажется, что потолочная «плита» парит в воздухе, не соприкасаясь со стеной. Они хорошо смотрятся в современных и минималистичных интерьерах.' ;
+              } else {
+                echo 'Через це здається, що стельова «плита» ширяє в повітрі, не стикаючись зі стіною. Вони добре виглядають у сучасних та мінімалістичних інтер’єрах.';
+              } 
+            }; ?>
           </div>
           
           <a 

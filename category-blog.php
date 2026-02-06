@@ -1,13 +1,12 @@
 <?php
 /*
- * Template Name: Custom Category Template - My Category
  * Template Post Type: category
  */
 
 get_header();  
 
-$posts_per_page = 8; // Фіксована кількість постів на сторінку
-$current_page = 1; // Завжди показуємо першу сторінку
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+$posts_per_page = 8;
 ?>
 
 <section class="top-screen">
@@ -24,11 +23,10 @@ $current_page = 1; // Завжди показуємо першу сторінк�
     <div class="container">
         <div class="blog__wrap" id="blog-posts-container">
             <?php
-            $posts_per_page = 8;
-
             $args = [
                 'post_type'      => 'post',
                 'posts_per_page' => $posts_per_page,
+                'paged'          => $paged, 
                 'post_status'    => 'publish',
                 'orderby'        => 'date',
                 'order'          => 'DESC',
@@ -41,7 +39,10 @@ $current_page = 1; // Завжди показуємо першу сторінк�
             $blog_query = new WP_Query($args);
             
             if ($blog_query->have_posts()) :
+                $post_counter = 0;
                 while ($blog_query->have_posts()) : $blog_query->the_post();
+                    $post_counter++;
+                    error_log('Post #' . $post_counter . ' on page ' . $paged . ': ' . get_the_ID() . ' - ' . get_the_title());
             ?>
                     <article class="blog__item item" data-id="<?= get_the_ID() ?>">
                         <a href="<?php the_permalink(); ?>" class="item__img" style="background-image: url(<?= has_post_thumbnail() ? get_the_post_thumbnail_url() : bloginfo('template_url') . '/images/features/blog.jpg' ?>)"></a>
@@ -52,6 +53,9 @@ $current_page = 1; // Завжди показуємо першу сторінк�
                                 <?php the_title(); ?>
                             </a>
                         </h2>
+                        <div class="debug-info" style="display: none;">
+                            Page: <?php echo $paged; ?> | Post: <?php echo $post_counter; ?>
+                        </div>
                     </article>
             <?php
                 endwhile;
@@ -59,30 +63,35 @@ $current_page = 1; // Завжди показуємо першу сторінк�
             else :
                 echo '<p>' . esc_html__('No posts found.', 'text-domain') . '</p>';
             endif;
-            
-            $total_posts = $blog_query->found_posts;
-            $total_pages = ceil($total_posts / $posts_per_page);
             ?>
         </div>
         
-        <?php if ($total_posts > $posts_per_page) : ?>
-        <div class="load-more-container" id="load-more-container">
-            <button 
-                id="load-more-btn" 
-                class="button--main" 
-                data-page="2" 
-                data-offset="<?php echo $posts_per_page; ?>" 
-                data-category="<?php echo is_category() ? get_queried_object_id() : ''; ?>"
-                data-max-pages="<?php echo $total_pages; ?>"
-                data-posts-per-page="<?php echo $posts_per_page; ?>"
-                data-total-posts="<?php echo $total_posts; ?>"
-            >   
-                <?= get_bloginfo("language") == 'ru' ? 'Загрузить еще' : 'Завантажити ще' ?>
-            </button>
-            <div class="loader" id="load-more-loader" style="display: none;"></div>
-        </div>
-        <?php endif; ?>
+        <?php
+        $total_pages = $blog_query->max_num_pages;
+        
+        if ($total_pages > 1) {
+            $current_page = max(1, $paged);
+            
+            echo '<div class="load-more-container">';
+            echo '<div class="blog-pagination">';
+            echo paginate_links([
+                'base'      => str_replace(
+                    999999999,
+                    '%#%',
+                    esc_url(get_pagenum_link(999999999))
+                ),
+                'format'    => 'page/%#%/',
+                'current'   => $paged,
+                'total'     => $blog_query->max_num_pages,
+                'prev_text' => '←',
+                'next_text' => '→',
+            ]);
+            echo '</div>';
+            echo '</div>';
+        }
+        ?>
     </div>
 </section>
+<?php get_template_part('includes/modules/offices')?>
 
 <?php get_footer(); ?>

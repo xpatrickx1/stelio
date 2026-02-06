@@ -39,6 +39,6 @@ get_header();
 <?php endif; ?>
 
 <?php get_template_part('includes/modules/call')?>
-
+<?php get_template_part('includes/modules/offices')?>
 
 <?php get_footer(); ?>
