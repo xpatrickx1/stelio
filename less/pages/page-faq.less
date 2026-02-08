@@ -1,0 +1,202 @@
+
+
+@import "../base/fonts";
+@import "../base/mixins";
+@import "../base/variables";
+@import "../base/buttons";
+@import "../base/common";
+@import "../base/typography";
+@import "../base/animate";
+@import "../base/grid";
+
+@import '../sections/page-inner/top-screen.less';
+@import '../modules/universal/faq.less';
+
+.faq {
+    padding: 100px 0;
+    background: #ffffff;
+  
+    @media ( max-width: @sizes[ maxMD ] ) {
+      padding: 70px 0;
+    }
+  
+    @media ( max-width: @sizes[ maxSM ] ) {
+      padding: 60px 0;
+    }
+  
+    .container {
+      @media ( max-width: @sizes[ maxMD ] ) {
+        padding: 0;
+      }
+    }
+  
+  
+    h2 {
+      text-align: center;
+      .font(700);
+      .fontSize(50px, 65px);
+      color: #000000;
+      margin-bottom: 60px;
+  
+      @media ( max-width: @sizes[ maxLG ] ) {
+        margin-bottom: 40px;
+        .fontSize(40px, 52px);
+      }
+  
+      @media ( max-width: @sizes[ maxMD ] ) {
+        margin-bottom: 54px;
+        .fontSize(32px, 42px);
+      }
+  
+      @media ( max-width: @sizes[ maxSM ] ) {
+        margin-bottom: 46px;
+      }
+  
+    }
+  
+    &__wrap {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 70px;
+  
+      @media ( max-width: @sizes[maxLG]) {
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+
+      @media ( max-width: @sizes[ maxSM ] ) {
+        gap: 30px;
+      }
+    }
+  
+    .tabs {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin-bottom: 60px;
+      gap: 12px;
+      width: 330px;
+  
+      @media ( max-width: @sizes[maxLG]) {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        margin-bottom: 50px;
+      }
+  
+  
+      @media ( max-width: @sizes[maxSM]) {
+        margin-bottom: 30px;
+      }
+  
+      &__item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        .font(500);
+        .fontSize(18px, 24px);
+        padding: 12px 44px 12px 24px;
+        color: @color[title];
+        border-radius: 15px;
+        background: #fff;
+        border: 1px solid #000000;
+        cursor: pointer;
+        transition: @transition;
+        max-height: 70px;
+  
+        @media ( min-width: @sizes[minSM]) {
+          min-height: 54px;
+        }
+  
+        @media ( max-width: @sizes[maxLG]) {
+          padding: 15px 22px;
+          flex: 1 0 auto;
+          text-align: center;
+          margin-right: 12px;
+        }
+  
+  
+        @media ( max-width: @sizes[maxSM]) {
+          .fontSize(16px, 21px);
+          padding: 9px 15px;
+          border-radius: 10px;
+        }
+  
+        &:after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 11px;
+          background-image: url("data:image/svg+xml,%3Csvg width='6' height='11' viewBox='0 0 6 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.5' d='M1 1L5 5.5L1 10' stroke='%23292E33' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+          background-repeat: no-repeat;
+          top: 50%;
+          transform: translateY(-50%);
+          right: 24px;
+          transition: .3s;
+  
+          @media ( max-width: @sizes[maxLG]) {
+            display: none;
+          }
+        }
+  
+        @media ( min-width: @sizes[minMD]) {
+          &:hover {
+            color: #424242;
+
+            &:after {
+                transform: translate(10px, -50%);
+            }
+          }
+        }
+  
+        &.active {
+          color: @color[white];
+          background: #000000;
+  
+          &:after {
+            background-image: url("data:image/svg+xml,%3Csvg width='6' height='11' viewBox='0 0 6 11' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath opacity='0.5' d='M1 1L5 5.5L1 10' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+          }
+        }
+      }
+
+      @media ( max-width: @sizes[ maxSM ] ) {
+        padding: 0 16px;
+    }
+    }
+  
+    &__content {
+      max-width: 870px;
+      width: 100%;
+  
+      @media ( max-width: @sizes[maxLG]) {
+        width: 100%;
+        margin: 0 auto;
+      }
+  
+      @media ( max-width: @sizes[ maxMD ] ) {
+        padding: 0 34px;
+      }
+  
+      @media ( max-width: @sizes[ maxSM ] ) {
+        padding: 0 16px;
+      }
+    }
+  
+    &__accordion {
+      flex: 1 0 auto;
+    }
+    
+    .slick-track {
+        padding-bottom: 0;
+        
+    }
+
+    &__title-wrap {
+      position: relative;
+      cursor: pointer;
+    }
+  }
+  
+  
+  

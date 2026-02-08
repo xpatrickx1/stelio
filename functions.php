@@ -182,6 +182,7 @@ $css_files = array(
     'order',
     'payments',
     'team',
+    'faq',
 );
 
 add_action('wp_enqueue_scripts', 'ox_adding_critical_css');
@@ -225,6 +226,7 @@ function ox_adding_critical_css()
         "page-works" => "works",
         "page-price" => "price",
         "page-single-works" => "singleworks",
+        "page-faq" => "faq",
     );
     $currentPageTemplate = get_page_template_slug();
     $currentPageTemplateName = str_replace(['pages/', '.php'], '', $currentPageTemplate);

@@ -1,24 +1,23 @@
+<?php
+/*
+Template Name: FAQ Template
+*/
+get_header();
+?>
+
+<?php include 'faq-data.php' ?>
+
+
 <section class="top-screen">
   <div class="container ">
     <div class="top-screen__wrap">
       <div class="breadcrumbs">
         <span><a href="<?= home_url(); ?>"><?= get_bloginfo("language") == 'ru' ? 'Натяжные потолки в Киеве' : 'Натяжні стелі у Києві' ?></a></span>
         <span class="breadcrumbs__slash"> / </span>
-        <span><a href="/catalog/"><?= get_bloginfo("language") == 'ru' ? 'Каталог' : 'Каталог' ?></a></span>
-        <span class="breadcrumbs__slash"> / </span>
-        <?php 
-          if ( get_subcategory_name() ) { 
-          ?>
-              <span href="/design-sub"><?php echo get_subcategory_name(); ?></span>
-              <span class="breadcrumbs__slash"> / </span>
-          <?php } 
-        ?>
         <span><?= get_field('breadcrumb') ? the_field('breadcrumb') : get_the_title() ?></span>
       </div>
-       
-    
       
-      <div class="top-screen__top">
+      <!-- <div class="top-screen__top">
         <div class="top-screen--left">
           <img 
             src="<?= bloginfo('template_url') . '/images/loader.gif' ?>" 
@@ -50,13 +49,13 @@
           </div>
         </div>
         
-      </div>
+      </div> -->
 
       <div class="top-screen__bottom">
         <h1>
           <?= get_field( 'page_title' ) ? the_field( 'page_title' ) : get_the_title() ?>
         </h1>
-        <div class="top-screen__bottom--left">
+        <!-- <div class="top-screen__bottom--left">
           <div class="top-screen__description">
             <?php if ( get_field('top_screen_description_1'))  { 
               echo get_field('top_screen_description_1') ;
@@ -87,9 +86,59 @@
             class="button--main">
             <span><?= get_bloginfo("language") == 'ru' ? 'Бесплатный замер' : 'Безкоштовний замір'?></span>
           </a>
-        </div>
+        </div> -->
       </div>
 
     </div>
   </div>
 </section>
+
+
+<section class="faq" id="faq">
+
+  <div class="container">
+
+    <div class="faq__wrap ">
+
+      <div class="faq__tabs tabs">
+        <?php if (have_rows('faq')) : ?>
+          <?php while (have_rows('faq')) : the_row(); ?>
+
+            <?php 
+              $tab_name = get_sub_field('tab_name'); 
+              if ( !empty($tab_name) ) :
+            ?>
+              <div class="tabs__item item">
+                <div><?= esc_html($tab_name); ?></div>
+                <span class="faq__tab-icon"></span>
+              </div>
+            <?php endif; ?>
+
+          <?php endwhile; ?>
+        <?php endif; ?>
+      </div>
+
+        <div class="faq__content content">
+          <?php if (have_rows('faq')) :
+            while ( have_rows('faq')) : the_row(); ?>
+            <div class="faq__accordion">
+              <?php if (have_rows('faq_category_list')) :
+                while ( have_rows('faq_category_list')) : the_row(); ?>
+                  <div class="faq__item">
+                    <div class="faq__title-wrap">
+                      <h3><?= get_sub_field('question') ?></h3>
+                      <span class="faq__question-icon"></span>
+                    </div>
+                    <div class="faq__description item-description" ><?= get_sub_field('answer') ?></div>
+                  </div>
+                <?php endwhile; ?>
+              <?php endif; ?>
+            </div>
+            <?php endwhile; ?>
+          <?php endif; ?>
+        </div>
+    </div>
+  </div>
+</section>
+
+<?php get_footer(); ?>

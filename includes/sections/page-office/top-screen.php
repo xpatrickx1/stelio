@@ -4,7 +4,7 @@
       <div class="breadcrumbs">
         <span><a href="<?= home_url(); ?>"><?= get_bloginfo("language") == 'ru' ? 'Натяжные потолки в Киеве' : 'Натяжні стелі у Києві' ?></a></span>
         <span class="breadcrumbs__slash"> / </span>
-        <span><a href="/catalog/"><?= get_bloginfo("language") == 'ru' ? 'Каталог' : 'Каталог' ?></a></span>
+        <span><a href="/catalog/"><?= get_bloginfo("language") == 'ru' ? 'Офисы' : 'Офіси' ?></a></span>
         <span class="breadcrumbs__slash"> / </span>
         <?php 
           if ( get_subcategory_name() ) { 
